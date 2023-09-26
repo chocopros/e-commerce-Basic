@@ -4,5 +4,5 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 # DEPENDENCIES
 
-    - npm i axios react-router-dom styled-
+    - npm i axios react-router-dom styled-components
     - npm install @reduxjs/toolkit react-redux

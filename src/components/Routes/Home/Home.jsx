@@ -20,7 +20,7 @@ const Home = () => {
 
   return (
     <HeroMainHome>
-
+      <h1>Page Home</h1>
     </HeroMainHome>
   )
 }

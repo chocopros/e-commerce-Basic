@@ -1,104 +1,131 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import BurguerButton from './BurguerButton'
+import { Link } from 'react-router-dom'
 
-const HeaderMain = styled.header`
-  height: 100px;
 
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border-bottom:  1px solid black;
-`;
+function Navbar() {
 
-const NavItems = styled.nav`
- 
-`;
-
-const ListItems = styled.ul`
-  display: flex;
-  gap: 30px;
-  list-style: none;
-  height: 100px; 
-  
-`;
-
-const ItemNav = styled.li`
-  text-decoration: none;
-  margin: 0 10px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-}
-`;
-
-const ContainerImg = styled.div`
-  height: 70px;
-`
-
-const Logo = styled.img`
-  height: 100%; 
-`
-
-const IconHeader = styled.img`
-  height: 50px;
-`
-
-const Header = () => {
-    
+  const [clicked, setClicked] = useState(false)
+  const handleClick = () => {
+    //cuando esta true lo pasa a false y vice versa
+    setClicked(!clicked)
+  }
   return (
-    <HeaderMain>
-      <NavLink to='/' style={{textDecoration: 'none', color: 'black'}} >
-        <ContainerImg>
-          <Logo src="/images/LogoEcommerce.png" />
-        </ContainerImg>
-       
-      </NavLink>
-      <NavItems>
-        <ListItems>
-          
-          <ItemNav >
-            <NavLink
-              style={{textDecoration: 'none', color: 'black'}} 
-              className={({isActive}) => isActive ? 'active-link' : null}
-              to='/login'
-            >
-            Login
-            </NavLink>
-          </ItemNav>
+    <>
+      <NavContainer>
+        
+        <Link to='/'>
+          <Logo>
+            <img src="Public\images\LogoEcommerce.png" alt="Logo Ecommerce" height='45px' />
+            <h1>e-commerce</h1>
+          </Logo>
+        </Link>
+        
 
-          <ItemNav>
-            <NavLink 
-              style={{textDecoration: 'none', color: 'black'}} 
-              className={({isActive}) => isActive ? 'active-link' : null}
-              to='/purchases'
-            >
-            Purchases
-            </NavLink>
-          </ItemNav>
+        <div className={`links ${clicked ? 'active' : ''}`}>
+          <Link to='/'>Home </Link>
+          <Link to='/login'>Login</Link>
+          <Link to='/purchases'>Purchases</Link>
+        </div>
 
-          <ItemNav>
-            <NavLink 
-              style={{textDecoration: 'none', color: 'black'}} 
-              className={({isActive}) => isActive ? 'active-link' : null}
-              to='/contact'
-            >
-            Contact
-            </NavLink>
-          </ItemNav>
-
-          <ItemNav>
-            <IconHeader src='Public\images\shopping-cart.png' />
-          </ItemNav>
-        </ListItems>
-      </NavItems>
-      
-
-
-    </HeaderMain>
+        <div className='burguer'>
+          <BurguerButton clicked={clicked} handleClick={handleClick} />
+        </div>
+        <BgDiv className={`initial ${clicked ? ' active' : ''}`}></BgDiv>
+      </NavContainer>
+    </>
   )
 }
 
-export default Header
+export default Navbar
+
+const Logo = styled.div`
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+`
+
+const NavContainer = styled.nav`
+
+  padding: .4rem;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100px;
+
+  a{
+    color: white;
+    text-decoration: none;
+    margin-right: 1rem;
+  }
+  .links{
+    position: absolute;
+    top: -700px;
+    left: -2000px;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    transition: all .5s ease;
+    a{
+      color: #000000;
+      font-size: 2rem;
+      display: block;
+    }
+    @media(min-width: 768px){
+      position: initial;
+      margin: 0;
+      a{
+        font-size: 1rem;
+        color: #000000;
+        display: inline;
+      }
+      display: block;
+    }
+  }
+  .links.active{
+    width: 100%;
+    display: block;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    a{
+      font-size: 2rem;
+      margin-top: 1rem;
+      color: #000000;
+    }
+
+  }
+  .burguer{
+    @media(min-width: 768px){
+      display: none;
+    }
+  }
+`
+
+const BgDiv = styled.div`
+  background-color: #e8e8e8;
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: all .6s ease ;
+  
+  &.active{
+    border-radius: 0 0 80% 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+`

@@ -35,11 +35,10 @@ export default Home
 
 const HeroMainHome = styled.section`
 
-  padding: 50px;
   min-height: calc(100vh - 118px);
   max-width: 1300px;
   margin: 0 auto;
-  background-color: #e7e7e7;
+  margin-top: 50px;
 
   display: flex;
   flex-wrap: wrap;

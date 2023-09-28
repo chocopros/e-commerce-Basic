@@ -6,11 +6,16 @@ import { Link } from 'react-router-dom'
 
 function Navbar() {
 
+
+
   const [clicked, setClicked] = useState(false)
   const handleClick = () => {
     //cuando esta true lo pasa a false y vice versa
     setClicked(!clicked)
   }
+
+
+
   return (
     <>
       <NavContainer>
@@ -109,8 +114,8 @@ const NavContainer = styled.nav`
       font-size: 3rem;
       margin-top: 1rem;
       color: #000000;
-      
     }
+  
 
   }
   .burguer{

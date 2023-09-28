@@ -39,7 +39,7 @@ const HeroMainHome = styled.section`
   min-height: calc(100vh - 118px);
   max-width: 1300px;
   margin: 0 auto;
-  background-color: #e7e7e7;
+  background-color: #ffffff;
 
   display: flex;
   flex-wrap: wrap;

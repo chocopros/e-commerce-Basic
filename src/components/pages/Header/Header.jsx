@@ -6,11 +6,16 @@ import { Link } from 'react-router-dom'
 
 function Navbar() {
 
+
+
   const [clicked, setClicked] = useState(false)
   const handleClick = () => {
     //cuando esta true lo pasa a false y vice versa
     setClicked(!clicked)
   }
+
+
+
   return (
     <>
       <NavContainer>
@@ -33,6 +38,7 @@ function Navbar() {
           <BurguerButton clicked={clicked} handleClick={handleClick} />
           <BgDiv className={`initial ${clicked ? ' active' : ''}`}></BgDiv>
         </div>
+        
         
       </NavContainer>
     </>
@@ -57,6 +63,11 @@ const NavContainer = styled.nav`
   align-items: center;
   justify-content: space-around;
   height: 100px;
+  
+
+  -webkit-box-shadow: 0px 22px 39px -31px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 22px 39px -31px rgba(0,0,0,0.75);
+  box-shadow: 0px 22px 39px -31px rgba(0,0,0,0.75);
 
   a{
     color: white;
@@ -66,7 +77,7 @@ const NavContainer = styled.nav`
   .links{
     position: absolute;
     top: -700px;
-    left: -2000px;
+    left: 1000px;
     right: 0;
     margin-left: auto;
     margin-right: auto;
@@ -98,11 +109,13 @@ const NavContainer = styled.nav`
     left: 0;
     right: 0;
     text-align: center;
+    z-index: 3;
     a{
-      font-size: 2rem;
+      font-size: 3rem;
       margin-top: 1rem;
       color: #000000;
     }
+  
 
   }
   .burguer{
@@ -113,18 +126,18 @@ const NavContainer = styled.nav`
 `
 
 const BgDiv = styled.div`
-  background-color: #e8e8e8;
+  background-color: #8d8d8d8e;
   position: absolute;
-  top: -1000px;
+  top: 1000px;
   left: -1000px;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  transition: all .6s ease ;
+  z-index: 2;
+  transition: all 0.2s ease ;
   
   &.active{
-    border-radius: 0 0 80% 0;
-    top: 0;
+    border-radius: 0 0 50% 0;
+    top: 100px;
     left: 0;
     width: 100%;
     height: 100%;

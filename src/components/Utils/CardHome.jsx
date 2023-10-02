@@ -28,7 +28,7 @@ const CardHome = ( {product}) => {
   )
 }
 
-export default CardHome
+export default CardHome;
 
 const Card = styled.article`
     
@@ -37,6 +37,12 @@ const Card = styled.article`
     border: 1px solid #00000043;
     width: 350px;
     border-radius: 15px;
+    transition: all .2s;
+    
+    &:hover {
+        transform: scale(1.07);
+        box-shadow: 1px 1px 10px 7px #00000035;
+    }
     
 
     header{

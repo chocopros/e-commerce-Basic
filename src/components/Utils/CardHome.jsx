@@ -37,11 +37,13 @@ const Card = styled.article`
     border: 1px solid #00000043;
     width: 350px;
     border-radius: 15px;
-    transition: all .2s;
+    transition: all 350ms;
     
     &:hover {
         transform: scale(1.07);
         box-shadow: 1px 1px 10px 7px #00000035;
+        border: none;
+        border-radius: 30px;
     }
     
 

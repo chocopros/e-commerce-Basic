@@ -47,8 +47,23 @@ const MainContainer = styled.article`
     flex-wrap: wrap;
     justify-content: center;
 
+    
+    
+    
+
     .container-info{
         width: 50%;
+    }
+
+    @media (max-width: 925px) {
+
+        gap: 30px;
+        min-width: 375px;
+
+        .container-info{
+            width: 80%;
+            min-width: 375px;
+        }
     }
 `;
 
@@ -59,9 +74,9 @@ const InfoContainer = styled.div`
     flex-direction: column;
     gap:  25px;
     padding: 0 15px;
-
-    min-width: 400px;
-
+    
+    
+    
     p{
         text-align: justify;
     }
@@ -74,10 +89,11 @@ const InfoContainer = styled.div`
     .info{
         width: 50%;
         
+        
 
         h2{
             color: #888888;
-            font-size: 18px;
+           
         }
 
         .panel-quantify{
@@ -115,17 +131,14 @@ const InfoContainer = styled.div`
 
 const CarrouselContainer = styled.div`
 
-    min-width: 460px;   
+    min-width: 460px;
     
     .carrousel{
 
         width: 100%;
         display: flex;
         justify-content: space-around;
-        align-items: center;
-        
-        
-    
+        align-items: center; 
 
         button{
             color: white;
@@ -145,6 +158,9 @@ const CarrouselContainer = styled.div`
             img{
                 
                 height: 100%;
+                @media (max-width: 425px) {
+                    height: 50%;
+                }
                
             }
         }

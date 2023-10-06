@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import styled from 'styled-components';
+import Loading from '../../../Utils/Loading'
+const Imagen = lazy(()=> import('../../../Utils/ImgLoading'))
 
 const ContainerInfo = ( { product }) => {
   return (
@@ -8,7 +10,9 @@ const ContainerInfo = ( { product }) => {
             <div className='carrousel'>
                 <button>{`<`}</button>
                 <div className='img-container'>
-                 <img src={product.images?.[0].url} alt="imagen" />
+                    <Suspense fallback={<img src='Public\images\loading-dots.gif'></img>}>
+                        <Imagen url={product.images?.[0].url} alt={product.title} />
+                    </Suspense>
                 </div>
                 <button>{`>`}</button>
             </div>

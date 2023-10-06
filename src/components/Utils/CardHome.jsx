@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
+const Imagen = lazy(()=> import('../Utils/ImgLoading'))
 
 const CardHome = ( {product}) => {
    const navigate = useNavigate()
@@ -13,7 +14,9 @@ const CardHome = ( {product}) => {
   return (
     <Card onClick={handleClick}>
         <header>
-            <img src={product.images[0].url} alt={product.title} />
+            <Suspense fallback={<img src="Public\images\loading-dots.gif" />} >
+                <Imagen url={product.images[0].url} alt={product.title} />
+            </Suspense>
         </header>
         <div className="Card__body">
             <h1>{product.title} <span>{`- ${product.brand}`}</span></h1>

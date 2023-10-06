@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react'
 import styled from 'styled-components';
-import Loading from '../../../Utils/Loading'
+
 const Imagen = lazy(()=> import('../../../Utils/ImgLoading'))
 
 const ContainerInfo = ( { product }) => {

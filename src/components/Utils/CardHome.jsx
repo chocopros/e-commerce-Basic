@@ -21,10 +21,15 @@ const CardHome = ( {product}) => {
         <div className="Card__body">
             <h1>{product.title} <span>{`- ${product.brand}`}</span></h1>
             <section className='info__body'>
-                <h2>Price</h2>
-                <h3>{`$${product.price}`}</h3>
-                <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2L0WvS4Ostku0Q2hUVKCoiIYqWKgV3c0hpRkS7BaroWoXXUo74j5P88M19MOI5xszGvA&usqp=CAU" alt="Add-To-Cart" />
+                <div>
+                    <h2>Price</h2>
+                    <h3>{`$${product.price}`}</h3>
+                </div>
+                <button onClick={()=> console.log('buttonee')}>
+                    <i className="fa-solid fa-cart-plus"></i>
+                </button>
             </section>
+           
         </div>
         
     </Card>
@@ -55,11 +60,14 @@ const Card = styled.article`
         justify-content: center;
         align-items: center;
         margin: 20px 20px;
+        height: 200px;
     }
     
     
     img {
-        height: 200px;
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
     }
 
     .Card__body {
@@ -72,8 +80,8 @@ const Card = styled.article`
         
 
         .info__body {
-            
-            position: relative;
+            display: flex;
+            justify-content: space-around;
         }
 
         h1{
@@ -90,12 +98,21 @@ const Card = styled.article`
             margin-left: 10px;
         }
 
-        img {
-            height: 50px;
-            position: absolute;
-            top: 0;
-            right: 30px;
+        button{
+            padding: 10px 10px;
+            font-size: 20px;
+            border-style: none;
+            background-color: #efefef;
+            border-radius: 50%;
+            transition: all 350ms;
+            
+            &:hover {
+                background-color: #000000;
+                color: #fff;
+            }
         }
+
+       
     }
    
 `

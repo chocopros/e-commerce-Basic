@@ -19,7 +19,7 @@ const ProductDetails = () => {
       .catch(err => console.log(err))
   }, [])
   
-  console.log(product)
+  // console.log(product)
   return (
     <HeroMainProductDetails>
 

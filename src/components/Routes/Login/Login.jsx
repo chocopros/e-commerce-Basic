@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import styled from 'styled-components'
 
 
+
 const Login = () => {
 
   const {register, handleSubmit, reset} = useForm();
@@ -13,10 +14,11 @@ const Login = () => {
     //console.log(data)
     const URL = `https://e-commerce-api-v2.academlo.tech/api/v1/users/login`
 
-
-
     axios.post(URL, data)
-      .then(res => console.log(res.data))
+      .then(res => {
+        console.log(res.data)
+        localStorage.setItem('token', res.data.token)
+      })
       .catch(err => console.log(err))
 
 

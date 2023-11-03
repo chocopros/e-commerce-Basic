@@ -1,20 +1,60 @@
-import React, { Suspense, lazy } from 'react'
+import React, { Suspense, lazy, useEffect, useState } from 'react'
 import styled from 'styled-components';
 
 const Imagen = lazy(()=> import('../../../Utils/ImgLoading'))
 
 const ContainerInfo = ( { product }) => {
+
+
+    const [position, setPosition] = useState(0)
+
+    const derecha = () => {
+
+        const numImg = Number(product?.images.length)
+       
+        const imgLink = product.images?.[position].url
+
+        if (position < numImg - 1 ) {
+            setPosition(position + 1)
+        } else {
+            setPosition(0)
+        }
+
+       
+    }
+
+    const izquierda = () => {
+
+        const numImg = Number(product?.images.length)
+       
+    
+        console.log(numImg)
+        console.log(position)
+
+        if (position === 0) {
+            setPosition(2)
+        } else {
+            setPosition(position -1)
+        }
+
+       
+    }
+    
+
+   
+
   return (
     <MainContainer>
         <CarrouselContainer className='container-info'>
             <div className='carrousel'>
-                <button>{`<`}</button>
+                <button onClick={izquierda} >{`<`}</button>
                 <div className='img-container'>
                     <Suspense fallback={<img src='Public\images\loading-dots.gif'></img>}>
-                        <Imagen url={product.images?.[0].url} alt={product.title} />
+                        <Imagen url={product.images?.[position].url} alt={product.title} />
+                        {/* <Imagen url={product.images?.[0].url} alt={product.title} /> */}
                     </Suspense>
                 </div>
-                <button>{`>`}</button>
+                <button onClick={derecha} >{`>`}</button>
             </div>
         </CarrouselContainer >
         <InfoContainer className='container-info'>
